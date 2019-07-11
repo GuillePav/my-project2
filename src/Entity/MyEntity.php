@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -119,6 +121,64 @@ class MyEntity
     public function setNbLike(int $nb_like): self
     {
         $this->nb_like = $nb_like;
+
+        return $this;
+    }
+
+    private $category;
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\JoinColumn(name="id", referencedColumnName="id")
+     */
+
+     /**
+    * @ORM\ManyToMany(targetEntity="Tag", inversedBy="products", cascade={"persist"})
+    * @ORM\JoinTable(name="product_tags")
+    */
+    
+    private $tags;    
+    
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+        }
 
         return $this;
     }

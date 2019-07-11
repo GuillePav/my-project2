@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<h1>Register of a New Product</h1>
+
+
+{{ form_start(form) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.content) }}
+                {{ form_row(form.created_at) }}
+                {{ form_row(form.updated_at) }}
+                {{ form_row(form.is_enabled) }}
+                {{ form_row(form.nb_like) }}
+
+
+<button type = "submit" class="btn btn-info">Validate</button>
+
+{{ form_end(form) }}
+
+{% endblock %}
+
+
+

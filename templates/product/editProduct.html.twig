@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<h1>Détails du produit {{ product.title }} : </h1>
+
+<ul class="list-group list-group-flush col-md-2">
+    <li class="list-group-item list-group-item-info">Content : {{ product.content }}</li>
+    <li class="list-group-item list-group-item-info">Disponibilité : {{ product.isEnabled }}</li>
+</ul>
+
+{% endblock %}

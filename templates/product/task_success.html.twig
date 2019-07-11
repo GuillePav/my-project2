@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block content_body %}
+
+Le produit {{ product.title }} a bien été créé !
+
+Détails :
+
+<ul>
+    <li>Content : {{ product.content }}</li>
+    <li>Is enabled  : {{ product.isEnabled }}</li>
+    <li>Nb like  : {{ product.nbLike }}</li>
+</ul>
+
+{% endblock %}
